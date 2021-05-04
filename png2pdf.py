@@ -4,11 +4,13 @@ from fpdf import FPDF
 from tqdm import tqdm 
 pdf = FPDF()
 w,h = 0,0
+firstfilenumber = 0 #Change this
+lastfilenumber = 0 #Change this
 
-for i in range(firstfilenumber, lastfilenumber+1):
+for i in tqdm(range(firstfilenumber, lastfilenumber+1)):
     fname = "file%d.png" % i #file name here, %d = number, for eg. file%d.png will be file0.png, %.3d = file000.png
     if os.path.exists(fname):
-        if i == 1:
+        if i == firstfilenumber:
             cover = Image.open(fname)
             w,h = cover.size
             pdf = FPDF(unit = "pt", format = [w,h])
@@ -16,7 +18,7 @@ for i in range(firstfilenumber, lastfilenumber+1):
         pdf.add_page()
         pdf.image(image,0,0,w,h)
     else:
-        print("File not found:", fname)
-    print("processed %d" % i)
+       ## print("File not found:", fname)
+    ##print("processed %d" % i)
 pdf.output("output.pdf", "F")
 print("done")
