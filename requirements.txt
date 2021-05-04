@@ -1,0 +1,6 @@
+Pillow==8.2.0
+pipreqs==0.4.10
+pyPdf==1.13
+PyPDF2==1.26.0
+PyPDF4==1.27.0
+tqdm==4.60.0
